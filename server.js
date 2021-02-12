@@ -4,9 +4,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-
+const cors = require('cors');
 //Middleware
 app.use(bodyParser.json());
+app.use(cors());
 
 const database = {
 	users: 
@@ -59,12 +60,12 @@ app.post("/signin", (req, res) => {
 app.post("/register", (req, res) => {
 	const {email, name, password} = req.body;
 	database.users.push({
-		id: "125",
+		id: "131",
 		name: name,
 		email: email,
 		password: password,
 		entries: 0,
-		date: new Date()
+		joined: new Date()
 	});
 	console.log(database.users[database.users.length - 1]);
 	res.json(database.users[database.users.length - 1]);
@@ -87,7 +88,7 @@ app.get("/profile/:id", (req, res) => {
 });
 
 //Image POST counting # of entries
-app.post('/image', (req, res) => {
+app.put('/image', (req, res) => {
 	const {id} = req.body;
 	var found = false;
 	database.users.forEach(user => {
@@ -99,7 +100,7 @@ app.post('/image', (req, res) => {
 	});
 
 	if(!found){
-		res.status(404).json("No Such User!");	
+		res.status(400).json("No Such User!");	
 	} 
 });
 
