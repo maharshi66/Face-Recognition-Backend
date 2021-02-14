@@ -6,8 +6,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
-const profile = require('./controllers/profile')
-const image = require('./controllers/image')
+const profile = require('./controllers/profile');
+const image = require('./controllers/image');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const knex = require('knex');
@@ -33,7 +33,7 @@ app.get("/", (req, res) => {res.json("Success!")});
 app.post('/signin', (req, res) => {signin.handleSignIn(req, res, db, bcrypt)});
 app.post("/register", (req, res) => {register.handleRegister(req, res, db, bcrypt)}); 
 app.get("/profile/:id", (req, res) => {profile.handleProfileGet(req, res, db)});
-app.put('/image', (req, res) => {image.hangleImageCounter(req, res, db)});
+app.put('/image', (req, res) => {image.handleImageCounter(req, res, db)});
 app.listen(3000, () => {
 	console.log("App running on PORT 3000");
 });
