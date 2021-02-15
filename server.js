@@ -12,19 +12,20 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const knex = require('knex');
 
+process.enc.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 //For Database Connection
 const db = knex({
  client: 'pg',
   connection: {
     connectionString : process.env.DATABASE_URL,
-    ssl: true
+    ssl: true,
   }
 });
 
+app.use(cors());
 console.log(db.select('*').from('users').then(data => console.log));
 //Middleware
 app.use(bodyParser.json());
-app.use(cors());
 
 //ROUTES
 app.get("/", (req, res) => {res.json("Success!")});
