@@ -16,10 +16,8 @@ const knex = require('knex');
 const db = knex({
  client: 'pg',
   connection: {
-    host : 'postgresql-convex-65012',
-    user : 'maharshi',
-    password : 'Mouse1996',
-    database : 'facerecognition'
+    host : process.env.DATABASE_URL,
+    ssl: true;
   }
 });
 
