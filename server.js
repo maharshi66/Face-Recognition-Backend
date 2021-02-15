@@ -4,14 +4,15 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const register = require('./controllers/register');
-const signin = require('./controllers/signin');
-const profile = require('./controllers/profile');
-const image = require('./controllers/image');
+
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const knex = require('knex');
 
+const register = require('./controllers/register');
+const signin = require('./controllers/signin');
+const profile = require('./controllers/profile');
+const image = require('./controllers/image');
 //For Database Connection
 const db = knex({
  client: 'pg',
@@ -27,10 +28,9 @@ const db = knex({
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next()
-  });
+});
 
 app.use(cors());
-console.log(db.select('*').from('users').then(data => console.log));
 //Middleware
 app.use(bodyParser.json());
 //ROUTES
