@@ -14,7 +14,7 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 //For Database Connection
-/*const db = knex({
+const db = knex({
  client: 'pg',
   connection: {
     connectionString : process.env.DATABASE_URL,
@@ -22,9 +22,9 @@ const image = require('./controllers/image');
     	rejectUnauthorized: true
     }
   }
-}); */
+}); 
 
-const db = knex({
+/*const db = knex({
   // connect to your own database here
   client: 'pg',
   connection: {
@@ -33,7 +33,7 @@ const db = knex({
     password : 'Mouse1996',
     database : 'facerecognition'
   }
-});
+});*/
 
  app.all('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
