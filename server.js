@@ -35,6 +35,6 @@ app.post("/register", (req, res) => {register.handleRegister(req, res, db, bcryp
 app.get("/profile/:id", (req, res) => {profile.handleProfileGet(req, res, db)});
 app.put('/image', (req, res) => {image.handleImageCounter(req, res, db)});
 app.post('/imageUrl', (req, res) => {image.handleApiCall(req, res)});
-app.listen(3000, () => {
-	console.log("App running on PORT 3000");
+app.listen(process.env.PORT || 3000, () => {
+	console.log(`App running on ${process.env.PORT}`);
 });
