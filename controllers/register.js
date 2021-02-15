@@ -2,7 +2,7 @@ const handleRegister = (req, res, db, bcrypt) => {
     res.header("Access-Control-Allow-Origin", "*");
 	const {email, name, password} = req.body;
 	if(!email || !name || !password){
-		res.status(400).json("Unable to register");
+		return res.status(400).json("Unable to register");
 	}
 	const hash = bcrypt.hashSync(password, 10);
 	//Add transactions so that we first update the Login table
