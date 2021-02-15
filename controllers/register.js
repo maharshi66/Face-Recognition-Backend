@@ -1,7 +1,9 @@
 const handleRegister = (req, res, db, bcrypt) => {
 	const {email, name, password} = req.body;
+	if(!email || !name || !password){
+		res.status(400).json("Unable to register");
+	}
 	const hash = bcrypt.hashSync(password, 10);
-
 	//Add transactions so that we first update the Login table
 	//and then the users table
 	db.transaction(trx => {
