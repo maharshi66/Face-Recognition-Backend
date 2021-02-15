@@ -12,13 +12,14 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const knex = require('knex');
 
-process.enc.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 //For Database Connection
 const db = knex({
  client: 'pg',
   connection: {
     connectionString : process.env.DATABASE_URL,
-    ssl: true,
+    ssl: {
+    	rejectUnauthorized: true;
+    }
   }
 });
 
