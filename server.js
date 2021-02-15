@@ -13,14 +13,13 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
+
 //For Database Connection
 const db = knex({
  client: 'pg',
   connection: {
-    connectionString : process.env.DATABASE_URL,
-    ssl: {
-    	rejectUnauthorized: true
-    }
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,  
   }
 }); 
 
